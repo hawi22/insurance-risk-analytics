@@ -3,10 +3,10 @@ import numpy as np
 
 def load_data(file_path):
     """Loads the insurance dataset using detected columns."""
-    # Your data uses commas
+   
     df = pd.read_csv(file_path, sep=',')
     
-    # Use TransactionDate (which exists in your data)
+    
     if 'TransactionDate' in df.columns:
         df['TransactionDate'] = pd.to_datetime(df['TransactionDate'])
     
@@ -25,7 +25,7 @@ def clean_data(df):
 
 def calculate_metrics(df):
     """Calculates Loss Ratio and Margin."""
-    # Ensure these match your CSV exactly
+    
     df['LossRatio'] = np.where(df['TotalPremium'] != 0, 
                                df['TotalClaims'] / df['TotalPremium'], 0)
     df['Margin'] = df['TotalPremium'] - df['TotalClaims']
